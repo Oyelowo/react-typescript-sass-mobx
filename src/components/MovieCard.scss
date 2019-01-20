@@ -1,0 +1,27 @@
+#all {
+}
+
+#imageSection {
+    height: 50vh;
+    width: 70vw;
+
+    img {
+        height: 50vh;
+        width: 70vw;
+    }
+
+    #img-sec {
+        height: 50vh;
+        width: 70vw;
+        border: 1px solid green;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #caption {
+        margin-top: 50px;
+
+    }
+}
