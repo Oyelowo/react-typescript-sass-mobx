@@ -1,10 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.scss';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.scss";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import { Provider } from "mobx-react";
+import  MovieCardStore  from "./stores/MovieCardStore";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const Root = (
+  <Provider MovieCardStore={MovieCardStore}>
+    <App />
+  </Provider>
+);
+
+ReactDOM.render(Root, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

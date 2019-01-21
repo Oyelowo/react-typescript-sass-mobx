@@ -28,9 +28,15 @@ const MovieCard = () => {
     errorOccured: false,
     message: "Not Found"
   });
+  const [showModal, setShowModal] = useState(false);
 
   const createMarkup = () => {
-    return { __html: apiData.summary };
+    console.log(apiData.summary)
+    const summary = apiData.summary
+      .split(". \| ?")
+      .slice(0, 1)
+      .join(".");
+    return { __html: summary };
   };
 
   const inputRef = React.createRef<HTMLInputElement>();
@@ -62,36 +68,43 @@ const MovieCard = () => {
     }
   };
 
+  const handleShowModal =  () => {
+    setShowModal(true)
+  }
+  
+
   return (
     <div id="all">
-      <div id="imageSection">
-        {error.errorOccured || !apiData.image ? (
-          <div>{error.message}</div>
-        ) : (
-          <div>
-            <section id="img-sec">
-              <img src={apiData.image.original} alt={apiData.officialSite} />
-            </section>
-            <section id="caption">
+    {showModal ? <div style={{width: "60vw", height: "70vh", position:"absolute", zIndex:"auto"}}>{apiData.summary}</div>
+ :null }
+        <div className="container">
+        <div className="poster">
+          <div className="poster__img">
+            <img src={apiData.image.original} alt={apiData.officialSite} />
+          </div>
+          <div className="poster__info">
+            <p className="poster__title" style={{font:"0.3rem"}}>{apiData.officialSite}</p>
+            <p className="poster__text">
               {apiData ? (
-                <div dangerouslySetInnerHTML={createMarkup()} />
-              ) : (
+                <p dangerouslySetInnerHTML={createMarkup()} />
+              ) : ( 
                 <div>Loading</div>
               )}
-            </section>
+            </p>
           </div>
-        )}
-      </div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <input
-            ref={inputRef}
-            type="text"
-            value={value}
-            onChange={handleChange}
-          />
-          <button onClick={handleSubmit}>Search</button>
-        </form>
+        </div>
+        <div>
+          <form onSubmit={handleSubmit}>
+            <input
+              ref={inputRef}
+              type="text"
+              value={value}
+              onChange={handleChange}
+            />
+            <button onClick={handleSubmit}>Search</button>
+          </form>
+        </div>
+        <button id="find-out" onClick={handleShowModal} >Find out more</button>
       </div>
     </div>
   );

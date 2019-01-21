@@ -18,7 +18,7 @@ body {
 .container {
   display: block;
   width: 375px;
-  height: 70vh;
+  height: 677px;
   background: #ffffff;
   box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
   padding: 70px 30px 0;
@@ -32,11 +32,11 @@ body {
     position: absolute;
     width: 100%;
     height: 200px;
-    background: rgb(34, 26, 26);
+    background: red;
     top: 0;
     left: 0;
     z-index: -1;
-    background: linear-gradient(130deg, #4e351e 10%, #3d3838 100%);
+    background: linear-gradient(130deg, #e67e22 10%, #e74c3c 100%);
   }
 }
 
@@ -46,13 +46,10 @@ body {
   box-shadow: 1px 0 10px 0 rgba(0, 0, 0, 0.2);
   &__img {
     height: 200px;
+    background: url('http://cdn1-www.comingsoon.net/assets/uploads/gallery/angry-birds-1412173620/angrybirdsmovie0004.jpg');
     background-position: center;
     background-size: cover;
     width: 100%;
-    img{
-        height: 100%;
-        width: 100%;
-    }
   }
   &__info {
     background: #fff;
@@ -70,7 +67,7 @@ body {
   }
 }
 
-button#find-out {
+a {
   display: block;
   width: 250px;
   background: #27ae60;
